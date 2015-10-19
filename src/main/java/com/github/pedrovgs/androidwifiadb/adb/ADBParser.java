@@ -63,12 +63,13 @@ public class ADBParser {
     if (ipInfo.isEmpty() || ipInfo.contains(ERROR_PARSING_DEVICE_IP_KEY)) {
       return "";
     }
+    String[] splittedOutput = ipInfo.split("\\n");
     int line;
     for(line=0;line < splittedOutput.length;line++){
-      if(splittedOutput[line].contains(START_DEVICE_IP_INDICATOR)){break;}//first find the IP line number
+      if(splittedOutput[line].contains(START_DEVICE_IP_INDICATOR)){break;}
     }
     int end = splittedOutput[line].indexOf(END_DEVICE_IP_INDICATOR);
     int start = splittedOutput[line].indexOf(START_DEVICE_IP_INDICATOR) + 5;
     return splittedOutput[line].substring(start, end);
-  }
+    }
 }
